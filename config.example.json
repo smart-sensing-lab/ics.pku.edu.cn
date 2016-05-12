@@ -1,0 +1,14 @@
+{
+  "env": "development",
+  "server": {
+    "host-harttle-mac": "192.168.2.32",
+    "host": "0.0.0.0",
+    "port": 3008
+  },
+  "express": {
+    "port": 3008
+  },
+  "debug": {
+    "port": 35748
+  }
+}

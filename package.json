@@ -1,0 +1,32 @@
+{
+  "name": "smart-sensing-lab-www",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "start": "node bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "brick-less": "^1.1.5",
+    "brick-liquid": "^2.0.3",
+    "brick.js": "^2.2.0",
+    "cookie-parser": "~1.3.5",
+    "debug": "^2.2.0",
+    "express": "~4.13.1",
+    "gulp": "^3.9.1",
+    "lodash": "^4.11.1",
+    "lorem-ipsum": "^1.0.3",
+    "marked": "^0.3.5",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "async": "^3.0.7",
+    "bluebird": "^3.3.5",
+    "brick-asset": "^1.0.7",
+    "gulp": "^3.9.1",
+    "gulp-ssh": "^0.5.5",
+    "gulp-util": "^3.0.7",
+    "tiny-lr": "^0.2.1"
+  }
+}

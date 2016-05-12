@@ -1,0 +1,31 @@
+@import '../styles/variables.less';
+@import '../styles/mixins.less';
+
+#subtitle{
+  .navbar-form{
+    margin-top: 0;
+  }
+}
+
+.horizontal-nav{
+  font-size: 16px;
+  overflow: hidden;
+  li{
+    float: left;
+    padding: 0 15px;
+    border-right: 1px solid #ddd;
+    a{
+      .active(@grey, @primary);
+    }
+    &.active a{
+      color: @primary;
+    }
+  }
+  li:first-child{
+    padding-left: 0;
+  }
+  li:last-child{
+    border-right: 0;
+  }
+}
+

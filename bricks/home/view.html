@@ -1,0 +1,20 @@
+{%extend 'default'%}
+
+<div>
+  {% include "carousel" %}
+
+  <div class="container">
+    {% include "home-news" %}
+
+    <div class="row">
+      <div class="col-sm-7">
+        {% include "home-notices" %}
+      </div>
+      <div class="col-sm-5 img-entries">
+        {% for entry in imgEntries %}
+        {% include "home-img-entry" entry %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

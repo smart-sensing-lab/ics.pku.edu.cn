@@ -1,0 +1,37 @@
+<div>
+  <header class="block-header">
+    <a href="/news"> 最新动态</a>
+    <a class="more active" href="/news">更多 &gt;</a>
+  </header>
+  <div class="row">
+    <div class="col-sm-4 feature">
+      <img src="/img/news-feature.jpg" alt="feature">
+      <h4>校长教授们连鼓四次掌，总理在北大讲了啥</h4>
+      <p>Dolor erat, commodo ut, dapibus vehicula, lobortis sit amet, orci. Aliquam
+augue. In semper nisi nec. Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut erat volutpat. </p>
+
+    </div>
+    <div class="col-sm-4">
+      <ul class="list-unstyled">
+        {% for news in list1 %}
+        <li>
+          <a class="title" href="/news/{{news.id}}" title="{{news.title}}">
+            {{news.title}}</a>
+          <time>{{news.date | date: "%Y-%m-%d"}}</time>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <ul class="list-unstyled">
+        {% for news in list2 %}
+        <li>
+          <a class="title" href="/news/{{news.id}}" title="{{news.title}}">
+            {{news.title}}</a>
+          <time>{{news.date | date: "%Y-%m-%d"}}</time>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
