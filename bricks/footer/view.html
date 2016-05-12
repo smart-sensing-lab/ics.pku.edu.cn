@@ -54,12 +54,10 @@
   </section>
 </footer>
 
-{% if config.env == 'development' %}
 <script src="/site.js"></script>
+{% if config.env == 'development' %}
 <script type="text/async-script" 
   data-src="//{{config.server.host}}:{{config.debug.port}}/livereload.js">
 </script>
-{% else %}
-<script src="/js/site.js"></script>
 {% endif %}
 
