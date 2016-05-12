@@ -1,0 +1,17 @@
+[Unit]
+Description=lab
+#Requires=mongodb.service redis.service
+#After=mongodb.service redis.service
+
+[Service]
+WorkingDirectory=/home/harttle/repos/lab
+ExecStart=/usr/bin/node bin/www
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=lab
+User=harttle
+Group=users
+ 
+[Install]
+WantedBy=multi-user.target

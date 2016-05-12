@@ -8,6 +8,7 @@ var config = require('./config.json');
 var GulpSSH = require('gulp-ssh');
 var BPromise = require('bluebird');
 var fs = BPromise.promisifyAll(require("fs"));
+var asset = require('brick-asset');
 var sshConfig = {
     host: 'acer.harttle.com',
     port: 22,
@@ -17,24 +18,19 @@ var sshConfig = {
 var gulpSSH = new GulpSSH({
     sshConfig
 });
-var asset;
-if (config.env === 'development') {
-    asset = require('../brick-asset');
-} else {
-    asset = require('brick-asset');
-}
 
 gulp.task('deploy', function() {
     return gulpSSH
         .shell([
-            'cd repos/ec',
+            'cd repos/lab',
             'git pull',
             'npm install',
-            'sudo systemctl restart ec'
+            'brick-asset all'
+            'sudo systemctl restart lab'
         ], {
             filePath: 'deploy.log'
         })
-        .pipe(gulp.dest('logs'));
+        .pipe(gulp.dest('.'));
 });
 
 var dirs = {
@@ -105,7 +101,7 @@ var app = {
             }
         ]);
     },
-    asset: function(){
+    asset: function() {
         return asset.src('./bricks').then(function() {
             return BPromise.all([
                 asset.css().then(src => fs.writeFileAsync('./public/site.css', src)),
@@ -125,10 +121,10 @@ gulp.task('server', function(callback) {
 
 gulp.task('watch', function() {
     gulp.watch(dirs.server, app.restart);
-    gulp.watch(dirs.asset, function(e){
+    gulp.watch(dirs.asset, function(e) {
         console.log(e.path, e.type);
         var f = path.basename(e.path);
-        switch(f){
+        switch (f) {
             case 'site.js':
                 livereload.changed('/site.js');
                 break;
@@ -140,7 +136,7 @@ gulp.task('watch', function() {
     gulp.watch(dirs.bricks, function(e) {
         console.log(e.path, e.type);
         var f = path.basename(e.path);
-        switch(f){
+        switch (f) {
             case 'server.js':
                 app.restart(e);
                 break;
