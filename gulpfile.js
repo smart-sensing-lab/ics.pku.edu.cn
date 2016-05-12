@@ -24,8 +24,8 @@ gulp.task('deploy', function() {
         .shell([
             'cd repos/lab',
             'git pull',
-            'npm install',
-            'brick-asset all'
+            'npm install --production',
+            'brick-asset all',
             'sudo systemctl restart lab'
         ], {
             filePath: 'deploy.log'
