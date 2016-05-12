@@ -1,0 +1,65 @@
+<footer>
+  <section class="title">北京大学 · 智能与感知计算实验室</section>
+  <section class="meta-info">
+    <div class="container">
+      <div class="row">
+        <div class="link-col col-sm-3">
+          <header><a href="#" class="active">站内导航</a></header>
+          <ul class="list-unstyled">
+            <li><a href="#">机构简介</a></li>
+            <li><a href="#">最新动态</a></li>
+            <li><a href="#">资源下载</a></li>
+            <li><a href="#">成员介绍</a></li>
+          </ul>
+        </div>
+        <div class="link-col col-sm-3">
+          <header><a href="#">通知公告</a></header>
+          <ul class="list-unstyled">
+            <li><a href="#">北京大学毕业论文</a></li>
+            <li><a href="#">信息科学与技术学院</a></li>
+            <li><a href="#">软件与微电子学院</a></li>
+            <li><a href="#">信息工程学院</a></li>
+          </ul>
+        </div>
+        <div class="link-col col-sm-3">
+          <header><a href="#">友情链接</a></header>
+          <ul class="list-unstyled">
+            <li><a href="#">北京大学</a></li>
+            <li><a href="#">信息科学与技术学院</a></li>
+            <li><a href="#">软件与微电子学院</a></li>
+            <li><a href="#">信息工程学院</a></li>
+          </ul>
+        </div>
+        <div class="logo-col col-sm-3">
+          <img src="/img/pku/white-with-title.png" alt="logo">
+          <p>北京大学智能计算与感知实验室<br> Dolor elit dictum ante, Dolor elit dictum ante, et mollis eros augue at est. Class aptent taciti sociosqu ad litora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="credit-bar">
+    <div class="container">
+      <span>Copyright @ 2016 智能计算与感知实验室</span> 
+      |
+      <span>地址：北京市海淀区颐和园路5号</span>
+      |
+      <span>邮编：100871</span>
+      |
+      <span>
+        <a href="http://www.miitbeian.gov.cn/" class="active" target="_blank">
+          京ICP备05065075号-1
+        </a>
+      </span>
+    </div>
+  </section>
+</footer>
+
+{% if config.env == 'development' %}
+<script src="/site.js"></script>
+<script type="text/async-script" 
+  data-src="//{{config.server.host}}:{{config.debug.port}}/livereload.js">
+</script>
+{% else %}
+<script src="/js/site.js"></script>
+{% endif %}
+

@@ -1,0 +1,28 @@
+@import '../styles/mixins.less';
+@import '../styles/variables.less';
+
+.feature{
+  h4{
+    font-size: 15px;
+  }
+  p{
+    .line-clamp(3);
+    max-height: 52px;
+  }
+}
+
+ul li{
+  border-bottom: 1px solid #ddd;
+  padding: 9px 0;
+  .title{
+    font-size: 16px;
+    display: block;
+    .ellipsis;
+    margin-bottom: 5px;
+  }
+  time{
+    color: #777;
+    font-size: 14px;
+    font-family: cursive;
+  }
+}

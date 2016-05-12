@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'head' %}
+  <title>{{title}}</title>
+</head>
+
+<body>
+
+  {% include 'navbar' %}
+
+  {% include "brand-nav" %}
+
+  {{ block }}
+
+  {% include 'footer' %}
+
+</body>
+
+</html>

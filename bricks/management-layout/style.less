@@ -1,0 +1,216 @@
+@import "styles/variables";
+@left-width: 240px;
+
+&{
+  background: #f5f5f5;
+}
+
+.breadcrumb{
+  margin: 10px 0;
+}
+
+.panel{
+  background: white;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+}
+
+.left{
+  float: left;
+  width: @left-width;
+  padding-top: 20px;
+}
+
+.right{
+  margin-left: @left-width + 15px;
+  padding: 40px 30px;
+  overflow: hidden;
+  #subtitle{
+    color: #999;
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+}
+
+.nav-block{
+  border-bottom: 1px dashed #aaa;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.nav-block:last-child{
+  border-bottom: none;
+}
+
+.nav-block{
+  header, li{
+    padding: 0 40px;
+  }
+  header{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: @primary;
+  }
+  ul{
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 0;
+    a{
+      color: @grey;
+    }
+    a:hover{
+      color: @primary;
+      text-decoration: none;
+    }
+  }
+  li.active, li:hover{
+    background: @primary;
+    a{
+      color: white;
+    }
+  }
+}
+
+.right{
+  color: #777;
+}
+
+.md{
+  >ol>li{
+    color: #333;
+    font-size: 16px;
+    >p:first-child{
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 15px;
+      display: block;
+    }
+    margin-bottom: 50px;
+  }
+  p, li p, li{
+    color: #777;
+  }
+}
+
+.toggle{
+  >ol>li *{
+    display: none;
+  }
+}
+
+.growth_table {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+}
+
+.growth_table th {
+    line-height: 45px;
+    background-color: #0487e2;
+    border: 1px solid #0487e2;
+    font-size: 26px;
+    color: #fff;
+    text-align: center;
+}
+
+.growth_table td {
+    padding: 6px;
+    line-height: 20px;
+    border: 1px solid #0487e2;
+    font-size: 16px
+}
+
+.growth_table .medal {
+    display: inline-block;
+    width: 32px;
+    height: 36px;
+    background: url(/img/help/member_level.png) 0 0 no-repeat
+}
+
+.growth_table .medal.cu {
+    background-position: 0 -51px
+}
+
+.growth_table .medal.ag {
+    background-position: 0 -102px
+}
+
+.growth_table .medal.au {
+    background-position: 0 -153px
+}
+
+.growth_table .medal.c {
+    background-position: 0 -200px
+}
+
+.all_list {
+    width: 882px;
+    background-color: #fff;
+    list-style: none;
+    padding: 0;
+}
+
+.all_list li {
+    margin-bottom: 30px
+}
+
+.all_list h3 {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: #0487e2;
+    padding-left: 10px;
+    background-color: #e6f0ff;
+    height: 34px;
+    line-height: 34px
+}
+
+.all_list dt,.all_list dd {
+    float: left
+}
+
+.all_list dt {
+    min-width: 72px;
+    font-weight: bold;
+    color: #666;
+    padding: 6px 15px 6px 0
+}
+
+.all_list dd {
+    max-width: 742px;
+    overflow: hidden
+}
+
+.all_list dt,.all_list dd a {
+    height: 24px;
+    line-height: 24px
+}
+
+.all_list dd a {
+    padding: 6px 10px;
+    text-decoration: none;
+    color: #666;
+    display: inline-block
+}
+
+.all_list dd .v_line {
+    width: 1px;
+    height: 16px;
+    background: #ced1da;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block
+}
+
+.all_list dd a:first-child {
+    padding-left: 20px
+}
+
+.all_list dd a:hover {
+    color: #0487e2
+}

@@ -1,0 +1,15 @@
+<div>
+  <header class="block-header">
+    <a href="/notices"> 通知公告</a>
+    <a class="more active" href="/notices">更多 &gt;</a>
+  </header>
+  <ul class="list-unstyled">
+    {% for notice in notices %}
+    <li>
+      <time>{{notice.date | date: "%Y-%m-%d"}}</time>
+      <a class="title" href="/news/{{notice.id}}" title="{{notice.title}}">
+        {{notice.title}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
