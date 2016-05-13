@@ -49,5 +49,5 @@ Build assets only:
 gulp asset
 ```
 
-[grulp]: http://gulpjs.com/
+[gulp]: http://gulpjs.com/
 [brick.js]: https://github.com/brick-js/brick.js
