@@ -2,71 +2,28 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var path = require('path');
 var fork = require('child_process').fork;
-var tinyLr = require('tiny-lr');
 var async = require('async');
 var config = require('./config.json');
 var GulpSSH = require('gulp-ssh');
-var BPromise = require('bluebird');
-var fs = BPromise.promisifyAll(require("fs"));
+var watch = require('gulp-watch');
+var fs = require("fs");
 var asset = require('brick-asset');
-var sshConfig = {
-    host: 'acer.harttle.com',
-    port: 22,
-    username: 'harttle',
-    privateKey: fs.readFileSync('/Users/harttle/.ssh/id_rsa')
-};
-var gulpSSH = new GulpSSH({
-    sshConfig
-});
+var livereload = require('gulp-livereload');
 
-gulp.task('deploy', function() {
-    return gulpSSH
-        .shell([
-            'cd repos/lab',
-            'git pull',
-            'npm install --production',
-            'brick-asset all',
-            'sudo systemctl restart lab'
-        ], {
-            filePath: 'deploy.log'
-        })
-        .pipe(gulp.dest('.'));
-});
-
-var dirs = {
-    server: [
-        'bin/www',
-        'app.js',
-        'apis/**/*.js',
-        'models/**/*.js'
-    ],
-    asset: ['public/site.css', 'public/site.js'],
-    bricks: 'bricks/**'
-};
-
-var livereload = {
-    instance: null,
-    port: config.debug.port,
-    start: function(callback) {
-        livereload.instance = tinyLr();
-        livereload.instance.listen(livereload.port, callback);
-    },
-    changed: function(file, callback) {
-        console.log('[livereload] changed');
-        livereload.instance.changed({
-            body: {
-                files: [file]
-            }
-        });
-        callback && callback();
+if (config.deploy) {
+    if (config.deploy.privateKey) {
+        config.deploy.privateKey = fs.readFileSync('/Users/harttle/.ssh/id_rsa');
     }
-};
+    var gulpSSH = new GulpSSH({
+        sshConfig: config.deploy
+    });
+}
 
 var app = {
     instance: {},
     path: 'bin/www',
     env: {
-        DEBUG: 'www:*',
+        DEBUG: 'ics:*',
         DEBUG_COLORS: ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray', 'grey']
     },
     start: function(callback) {
@@ -77,8 +34,6 @@ var app = {
         });
         app.instance.stdout.pipe(process.stdout);
         app.instance.stderr.pipe(process.stderr);
-
-        gutil.log(gutil.colors.cyan('Starting'), 'express server ( PID:', app.instance.pid, ')');
         if (callback) callback();
     },
     stop: function(callback) {
@@ -91,7 +46,6 @@ var app = {
         }
         if (callback) callback();
     },
-
     restart: function(event) {
         async.series([
             app.stop,
@@ -101,52 +55,52 @@ var app = {
             }
         ]);
     },
-    asset: function() {
-        return asset.src('./bricks').then(function() {
-            return BPromise.all([
-                asset.css().then(src => fs.writeFileAsync('./public/site.css', src)),
-                asset.js().then(src => fs.writeFileAsync('./public/site.js', src))
-            ]);
+    livereload: function(cb) {
+        livereload.listen({
+            basePath: 'public'
         });
+        cb && cb();
+    },
+    css: function(cb) {
+        asset.src('./bricks')
+            .then(x => asset.css())
+            .then(css => fs.writeFile('./public/site.css', css, cb));
+    },
+    js: function(cb) {
+        asset.src('./bricks')
+            .then(x => asset.js())
+            .then(js => fs.writeFile('./public/site.js', js, cb));
     }
 };
 
-gulp.task('asset', function() {
-    return app.asset();
-});
-
 gulp.task('server', function(callback) {
-    async.series([app.start, livereload.start], callback);
+    async.series([app.start, app.livereload], callback);
 });
 
 gulp.task('watch', function() {
-    gulp.watch(dirs.server, app.restart);
-    gulp.watch(dirs.asset, function(e) {
-        console.log(e.path, e.type);
-        var f = path.basename(e.path);
-        switch (f) {
-            case 'site.js':
-                livereload.changed('/site.js');
-                break;
-            case 'site.css':
-                livereload.changed('/site.css');
-                break;
-        }
+    watch('./bricks/*/{client.js,client/**/*.js}', app.js);
+    watch('./bricks/*/{style.less,style/**/*.less}', app.css);
+    watch('./bricks/*/view.html', function(file) {
+        livereload.reload('index.html');
     });
-    gulp.watch(dirs.bricks, function(e) {
-        console.log(e.path, e.type);
-        var f = path.basename(e.path);
-        switch (f) {
-            case 'server.js':
-                app.restart(e);
-                break;
-            case 'view.html':
-                livereload.changed('.');
-                break;
-            default:
-                app.asset();
-        }
-    });
+    watch('./bricks/*/server.js', app.restart);
+    watch(['./public/site.css', './public/site.js'], livereload.changed);
 });
 
-gulp.task('default', ['asset', 'server', 'watch']);
+if (config.deploy) {
+    gulp.task('deploy', function() {
+        return gulpSSH
+            .shell([
+                'cd repos/lab',
+                'git pull',
+                'npm install --production',
+                'brick-asset all',
+                'sudo systemctl restart lab'
+            ], {
+                filePath: 'deploy.log'
+            })
+            .pipe(gulp.dest('.'));
+    });
+}
+
+gulp.task('default', ['server', 'watch']);

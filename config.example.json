@@ -1,14 +1,18 @@
 {
   "env": "development",
   "server": {
-    "host-harttle-mac": "192.168.2.32",
-    "host": "0.0.0.0",
+    "host": "localhost",
     "port": 3008
   },
   "express": {
+    "host": "0.0.0.0",
     "port": 3008
   },
-  "debug": {
-    "port": 35748
+  "livereload": 35748,
+  "deploy": {
+    "host": "acer.harttle.com",
+    "port": 22,
+    "username": "harttle",
+    "privateKey": "/Users/harttle/.ssh/id_rsa"
   }
 }
