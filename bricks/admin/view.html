@@ -1,3 +1,29 @@
-{%extend 'management-layout'%}
+{%extend 'default'%}
 
-{{ block }}
+<div>
+  <div class="container">
+
+    <div class="layout-wrapper">
+      <div class="left panel">
+        {% for nav in navs %}
+        <div class="nav-block">
+          <header>{{nav.title}}</header>
+          <ul>
+            {% for subnav in nav.navs %}
+            <li {% if subnav.href == href %}class="active"{% endif %}>
+              <a href="{{subnav.href}}">{{subnav.title}}</a> 
+              <i class="fa angle-right"></i>
+            </li>
+            {% endfor %} 
+          </ul>
+        </div>
+        {% endfor %} 
+      </div>
+      <div class="right panel">
+        {{ block }}
+      </div>
+    </div>
+
+  </div>
+</div>
+

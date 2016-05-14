@@ -1,23 +1,19 @@
 var _ = require('lodash');
-var users = {}, 
-    count = 0,
-    defaultUser = {
-        id: null,
-        name: 'alice',
-        description: 'Vestibulum in pede adipiscing mi dapibus condimentum. Etiam felis risus, condimentum in, malesuada eget, pretium ut, sapien.  Suspendisse placerat lectus.' 
-    };
+var mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 
-const names = [ 'Alice', 'Bob', 'Charlie', 'David' ];
-const descriptions = [
-    'Tincidunt. Proin sagittis. Curabitur auctor metus non mauris. Nunc',
-    'condimentum nisl non augue. Donec leo urna.  Ornare non, arcu. Maecenas',
-    'condimentum sodales odio. Sed eu orci.  Nullam adipiscing eros sit amet',
-    'ante. Vestibulum.  Imperdiet neque mauris aliquam nisl. Suspendisse blandit',
-    'quam quis felis. Praesent turpis nunc, vehicula in, bibendum.  Curabitur',
-    'consectetuer arcu. Etiam placerat est eget odio. Nulla facilisi. Nulla',
-    'facilisi. Mauris non neque. Suspendisse.  Quam, et dapibus mi enim sit amet',
-    'risus. Nulla sollicitudin eros sit amet diam. Aliquam ante.  Mattis odio',
-    'vitae tortor. Fusce iaculis. Aliquam rhoncus, diam quis tincidunt'];
+var UserSchema = mongoose.Schema({
+    name: String,
+    createTime: Date
+});
+
+UserSchema.statics.random = function(n) {
+    return n ? _.times(n, random) : random();
+};
+
+// Creates username, salt, hash fileds
+// see: https://github.com/saintedlama/passport-local-mongoose#options
+UserSchema.plugin(passportLocalMongoose);
 
 function random(obj) {
     return {
@@ -28,6 +24,4 @@ function random(obj) {
     };
 }
 
-exports.random = function(n){
-    return n ? _.times(random) : random();
-};
+module.exports = mongoose.model('User', UserSchema);
