@@ -54,10 +54,14 @@
   </section>
 </footer>
 
-<script src="/site.js"></script>
+{% if config.env == 'production' %}
+<script src="/site.min.js"></script>
+{% endif %}
+
 {% if config.env == 'development' %}
+<script src="/site.js"></script>
 <script type="text/async-script" 
-  data-src="//{{config.server.host}}:{{config.debug.port}}/livereload.js">
+  data-src="//{{config.server.host}}:{{config.livereload}}/livereload.js">
 </script>
 {% endif %}
 

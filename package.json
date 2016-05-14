@@ -29,8 +29,15 @@
     "async": "^2.0.0-rc.4",
     "brick-asset": "^1.0.7",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.7",
+    "gulp-file": "^0.3.0",
+    "gulp-jsbeautifier": "^2.0.3",
     "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-ssh": "^0.5.5",
+    "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5"
   }

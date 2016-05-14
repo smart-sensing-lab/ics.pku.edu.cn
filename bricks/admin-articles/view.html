@@ -1,0 +1,32 @@
+{% extend 'admin-layout' %}
+
+<div>
+  <div class="page-header">
+    <h3>文章列表</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>标题</th>
+          <th>摘要</th>
+          <th>类别</th>
+          <th>创建者</th>
+          <th>创建日期</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {%for article in articles %}
+        <tr>
+          <td>{{article.title}}</td>
+          <td>{{article.excerpt}}</td>
+          <td>{{article.type}}</td>
+          <td>{{article.creator.name}}</td>
+          <td>{{article.creator.createdTime | date: '%Y-%m-%d'}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+  </div>
+</div>

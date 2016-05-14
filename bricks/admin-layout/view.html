@@ -1,23 +1,32 @@
-{%extend 'default'%}
+{%extend 'default-layout'%}
 
 <div>
   <div class="container">
 
     <div class="layout-wrapper">
       <div class="left panel">
-        {% for nav in navs %}
         <div class="nav-block">
-          <header>{{nav.title}}</header>
+          <header>内容管理</header>
           <ul>
-            {% for subnav in nav.navs %}
-            <li {% if subnav.href == href %}class="active"{% endif %}>
-              <a href="{{subnav.href}}">{{subnav.title}}</a> 
-              <i class="fa angle-right"></i>
+            <li class="{{articleActive}}">
+              <a href="/admin/articles">文章管理</a> 
             </li>
-            {% endfor %} 
+            <li class="{{createArticleActive}}">
+              <a href="/admin/create-article">创建文章</a> 
+            </li>
+            <li class="{{fileActive}}">
+              <a href="/admin/files">文件管理</a> 
+            </li>
           </ul>
         </div>
-        {% endfor %} 
+        <div class="nav-block">
+          <header>网站维护</header>
+          <ul>
+            <li class="{{adminActive}}">
+              <a href="/admin/admins">管理员管理</a> 
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="right panel">
         {{ block }}

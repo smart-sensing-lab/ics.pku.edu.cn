@@ -4,7 +4,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
 
 var UserSchema = mongoose.Schema({
     name: String,
-    createTime: Date
+    createdTime: Date
 });
 
 UserSchema.statics.random = function(n) {

@@ -9,6 +9,13 @@ var watch = require('gulp-watch');
 var fs = require("fs");
 var asset = require('brick-asset');
 var livereload = require('gulp-livereload');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
+var file = require('gulp-file');
+var prettify = require('gulp-jsbeautifier');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var cleanCSS = require('gulp-clean-css');
 
 if (config.deploy) {
     if (config.deploy.privateKey) {
@@ -18,6 +25,15 @@ if (config.deploy) {
         sshConfig: config.deploy
     });
 }
+
+var dirs = {
+    client: './bricks/*/{client.js,client/**/*.js}',
+    style: './bricks/*/{style.less,style/**/*.less}',
+    server: './bricks/*/server.js',
+    css: './public/site.css',
+    js: './public/site.js',
+    view: './bricks/*/view.html'
+};
 
 var app = {
     instance: {},
@@ -32,6 +48,7 @@ var app = {
             silent: true,
             env: app.env
         });
+        gutil.log(gutil.colors.red('Starting'), 'express server ( PID:', app.instance.pid, ')');
         app.instance.stdout.pipe(process.stdout);
         app.instance.stderr.pipe(process.stderr);
         if (callback) callback();
@@ -42,9 +59,8 @@ var app = {
                 gutil.log(gutil.colors.red('Stopping'), 'express server ( PID:', app.instance.pid, ')');
                 if (callback) callback();
             });
-            return app.instance.kill('SIGINT');
-        }
-        if (callback) callback();
+            app.instance.kill('SIGINT');
+        } else if (callback) callback();
     },
     restart: function(event) {
         async.series([
@@ -54,37 +70,65 @@ var app = {
                 livereload.changed(event, callback);
             }
         ]);
-    },
-    livereload: function(cb) {
-        livereload.listen({
-            basePath: 'public'
-        });
-        cb && cb();
-    },
-    css: function(cb) {
-        asset.src('./bricks')
-            .then(x => asset.css())
-            .then(css => fs.writeFile('./public/site.css', css, cb));
-    },
-    js: function(cb) {
-        asset.src('./bricks')
-            .then(x => asset.js())
-            .then(js => fs.writeFile('./public/site.js', js, cb));
     }
 };
 
 gulp.task('server', function(callback) {
-    async.series([app.start, app.livereload], callback);
+    async.series([app.start], callback);
 });
 
 gulp.task('watch', function() {
-    watch('./bricks/*/{client.js,client/**/*.js}', app.js);
-    watch('./bricks/*/{style.less,style/**/*.less}', app.css);
-    watch('./bricks/*/view.html', function(file) {
-        livereload.reload('index.html');
+    livereload.listen({
+        port: config.livereload,
+        host: config.server.host
     });
-    watch('./bricks/*/server.js', app.restart);
-    watch(['./public/site.css', './public/site.js'], livereload.changed);
+    watch(dirs.client, function(){
+        gulp.run('js');
+    });
+    watch(dirs.style, function(){
+        gulp.run('css');
+    });
+    watch(dirs.server, app.restart);
+    watch([dirs.css, dirs.js, dirs.view], livereload.changed);
+});
+
+gulp.task('js', function() {
+    return asset.src('./bricks')
+        .then(x => asset.js())
+        .then(css => file('site.js', css, {
+                src: true
+            })
+            .pipe(prettify())
+            .pipe(gulp.dest('public')));
+});
+
+gulp.task('css', function() {
+    return asset.src('./bricks')
+        .then(x => asset.css())
+        .then(css => file('site.css', css, {
+                src: true
+            })
+            .pipe(sourcemaps.init())
+            .pipe(autoprefixer({
+                browsers: ['> 90%', 'IE >= 8']
+            }))
+            .pipe(prettify())
+            .pipe(gulp.dest('public')));
+});
+
+gulp.task('dist', function() {
+    gulp.src(dirs.js)
+        .pipe(uglify())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('public'));
+    gulp.src(dirs.css)
+        .pipe(cleanCSS())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('public'));
 });
 
 if (config.deploy) {
@@ -103,4 +147,5 @@ if (config.deploy) {
     });
 }
 
-gulp.task('default', ['server', 'watch']);
+gulp.task('build', ['js', 'css']);
+gulp.task('default', ['js', 'css', 'server', 'watch']);

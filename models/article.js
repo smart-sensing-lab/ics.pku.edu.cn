@@ -6,7 +6,8 @@ var ArticleSchema = mongoose.Schema({
     title: String,
     excerpt: String,
     content: String,
-    date: Date,
+    type: String,
+    createdTime: Date,
     img: String
 });
 

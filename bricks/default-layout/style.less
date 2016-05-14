@@ -7,6 +7,10 @@ body{
   -webkit-font-smoothing: antialiased;
 }
 
+body{
+	text-shadow: 1px black;
+}
+
 *:focus {
   outline:none;
 }
@@ -140,9 +144,9 @@ a.active{
 
 input, textarea, select{
   border-radius: 5px;
-  .placeholder({
+  &::placeholder{
     color: #aaa;
-  });
+  }
 }
 
 .panel-block{
