@@ -1,14 +1,10 @@
-@import 'styles/variables';
-@import 'styles/mixins';
+@import '../styles/variables';
+@import '../styles/mixins';
 
 body{
   font-size: 13px;
   font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-
-body{
-	text-shadow: 1px black;
 }
 
 *:focus {
@@ -39,6 +35,11 @@ a.active{
   border-radius: 2px;
 }
 
+.btn-xs{
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
 .btn-sm{
   padding-left: 20px;
   padding-right: 20px;
@@ -50,29 +51,33 @@ a.active{
 }
 
 .btn-default{
-  .btn(#eee, #333, @primary, #fff);
+  &:hover, &:active, &:focus{
+    color: #333;
+  }
 }
+
 .btn-primary{
-  .btn(@primary);
+  color: #fff;
+  background: @primary-light;
+  border: 1px solid darken(@primary-light, 5%);
+  &:hover, &:active, &:focus{
+    color: #fff;
+    background: darken(@primary-light, 10%);
+  }
 }
-.btn-grey{
-  .btn(rgb(185,185,185));
-}
-.btn-success{
-  .btn(@success);
-}
-.btn-info{
-  .btn(@info);
-}
+
 .btn-warning{
-  .btn(@warning);
-}
-.btn-danger{
-  .btn(@danger);
+  color: #fff;
+  background: @warning;
+  border: 1px solid saturate(@warning, 50%);
+  &:hover, &:active, &:focus{
+    color: #fff;
+    background: darken(@warning, 2%);
+  }
 }
 
 .bg-primary{
-  .bg(@primary);
+  .bg(@primary-light);
 }
 .bg-success{
   .bg(@success);
@@ -203,7 +208,7 @@ select, textarea, input{
 form{
   label.error{
     margin-bottom: 15px;
-    color: @danger;
+    color: @primary;
     font-weight: normal;
   }
 }

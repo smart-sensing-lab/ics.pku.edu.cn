@@ -2,15 +2,16 @@
 
 <div>
   <div class="page-header">
-    <h3>文章列表</h3>
+    <h3>文章管理</h3>
     <table class="table">
       <thead>
         <tr>
+          <th>类别</th>
           <th>标题</th>
           <th>摘要</th>
-          <th>类别</th>
           <th>创建者</th>
           <th>创建日期</th>
+          <th>操作</th>
         </tr>
       </thead>
 
@@ -18,11 +19,20 @@
 
         {%for article in articles %}
         <tr>
-          <td>{{article.title}}</td>
-          <td>{{article.excerpt}}</td>
           <td>{{article.type}}</td>
+          <td>{{article.title}}</td>
+          <td>{{article.content | strip_html | truncate: 10}}</td>
           <td>{{article.creator.name}}</td>
-          <td>{{article.creator.createdTime | date: '%Y-%m-%d'}}</td>
+          <td>{{article.createdTime | date: '%Y-%m-%d'}}</td>
+          <td>
+            <a class="btn btn-xs btn-default" 
+              href="/admin/articles/{{article.id}}/edit">
+              修改
+            </a>
+            <a class="btn btn-xs btn-primary btn-delete" data-id="{{article.id}}">
+              删除
+            </a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

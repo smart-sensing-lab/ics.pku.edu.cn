@@ -1,21 +1,25 @@
-@import '../styles/variables';
+@import "../styles/variables";
 
 &{
-  background: darken(@primary, 10%);
+  overflow: hidden;
 }
-.navbar-nav>li>a {
-  color: #fff;
-  font-size: 12px;
-  line-height: 12px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+ul{
+  margin: 0;
+  font-size: 0;
 }
-&.navbar{
-  border-radius: 0;
-  min-height: auto;
-  border: none;
-  margin-bottom: 0;
+li{
+  display: inline-block;
+  padding: 13px 0;
+  width: 16.6%;
+  text-align: center;
 }
-.navbar-nav li.highlight{
-  background: rgb(50, 50, 50);
+li:hover, li.active{
+  background: @primary;
+  a, a:hover, a:focus, a.active, a:active{
+    color: white;
+  }
+}
+a{
+  font-size: 15px;
+  color: #333;
 }

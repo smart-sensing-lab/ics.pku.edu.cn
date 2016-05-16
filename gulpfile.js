@@ -28,8 +28,8 @@ if (config.deploy) {
 
 var dirs = {
     client: './bricks/*/{client.js,client/**/*.js}',
-    style: './bricks/*/{style.less,style/**/*.less}',
-    server: './bricks/*/server.js',
+    style: './bricks/**/*.less',
+    app: ['./bricks/*/server.js', '*.js', 'config.json', 'models/*.js', 'api/**/*.js'],
     css: './public/site.css',
     js: './public/site.js',
     view: './bricks/*/view.html'
@@ -88,7 +88,7 @@ gulp.task('watch', function() {
     watch(dirs.style, function(){
         gulp.run('css');
     });
-    watch(dirs.server, app.restart);
+    watch(dirs.app, app.restart);
     watch([dirs.css, dirs.js, dirs.view], livereload.changed);
 });
 

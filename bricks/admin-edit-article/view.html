@@ -1,0 +1,42 @@
+{% extend 'admin-layout' editArticleActive='active' %}
+
+<div>
+  <div class="page-header">
+    <h3>
+      {% if article %} 编辑文章 {% else %} 创建文章 {% endif %}
+    </h3>
+  </div>
+
+  <form method="post">
+
+    {% if article %}
+      <input type="hidden" name="_method" value="PUT">
+    {% endif %}
+
+    <div class="form-group">
+      <label for="title" class="control-label">文章标题</label>
+      <input type="text" class="form-control" name="title" id="title"
+        placeholder="文章标题" value="{{article.title}}">
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="control-label">文章类型</label>
+      <select class="form-control" name="type" id="type">
+        <option value="news" {%if article.type == 'news' %}checked{%endif%}>
+          最新动态
+        </option>
+        <option value="notice" {%if article.type == 'notice' %}checked{%endif%}>
+          通知公告
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="content" class="control-label">文章内容</label>
+      <textarea class="form-control" name="content" id="content" rows="20" placeholder="文章内容">{{article.content}}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">提交</button>
+  </form>
+
+</div>

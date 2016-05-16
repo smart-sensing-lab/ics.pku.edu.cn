@@ -1,8 +1,8 @@
-var article = require('../../models/article');
+var Carousel = require('../../models/carousel');
 
-exports.view = function(req, done, fail){
+exports.get = function(req, done, fail){
     done({
-        carousels: article.random(3)
+        carousels: Carousel.random(3)
     });
 };
 

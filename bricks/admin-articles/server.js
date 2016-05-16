@@ -1,13 +1,21 @@
 const _ = require('lodash');
 const debug = require('debug')('ics:help');
-const article = require('../../models/article.js');
+const Article = require('../../models/article.js');
 
-exports.url = ['/admin/article', '/admin'];
+exports.url = ['/admin/articles', '/admin'];
 
-exports.view = function(req, done, fail) {
-    var title = '文章管理';
-    done({
-        articleActive: 'active',
-        title
-    });
+exports.get = function(req, done, fail) {
+    if(!req.user) return fail(401);
+
+    Article.find()
+        .populate('creator')
+        .execAsync()
+        .then(articles => {
+            done({
+                articleActive: 'active',
+                title: '文章管理',
+                articles: articles
+            });
+        })
+        .catch(fail);
 };

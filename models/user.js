@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
+var BPromise = require('bluebird');
 
 var UserSchema = mongoose.Schema({
     name: String,

@@ -2,7 +2,7 @@ var User = require('../../models/user.js');
 var debug = require('debug')('www:home');
 
 exports.url = ['/', '/home'];
-exports.view = function(req, done, fail){
+exports.get = function(req, done, fail){
     done({
         imgEntries: [{
             title: '师资<hr/>队伍',

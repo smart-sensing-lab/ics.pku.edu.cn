@@ -1,0 +1,17 @@
+{%extend 'default-layout'%}
+
+<div class="container">
+
+  <form class="form-signin" method="post">
+    <header>
+      <h3>管理员登录</h3>
+    </header>
+    <input name="username" id="username" class="form-control" placeholder="用户名" required autofocus>
+    <input name="password" type="password" id="password" class="form-control" placeholder="密码" required>
+    {% if message %}
+    <label class="error">{{message}}</label>
+    {% endif %}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+  </form>
+
+</div>

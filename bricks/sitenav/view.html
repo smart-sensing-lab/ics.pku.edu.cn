@@ -1,0 +1,36 @@
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li><a href="/">首页</a></li>
+      <li><a href="//www.pku.edu.cn">北京大学</a></li>
+      <li><a href="//its.pku.edu.cn">网络服务</a></li>
+      <li><a href="//mail.pku.edu.cn">邮件系统</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          链接 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="http://www.ece.pku.edu.cn/">信息工程学院</a></li>
+          <li><a href="http://eecs.pku.edu.cn/">信息科学与技术学院</a></li>
+          <li><a href="http://www.ss.pku.edu.cn/">软件与微电子学院</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="/login">管理员登录</a></li>
+        </ul>
+      </li>
+      {% if user %}
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          {{user.name}} <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/admin">管理页面</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="/logout">退出登录</a></li>
+        </ul>
+      </li>
+      {% else %}
+      <li><a href="/login">登录</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

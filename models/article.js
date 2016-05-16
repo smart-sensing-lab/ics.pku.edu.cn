@@ -1,14 +1,21 @@
 var _ = require('lodash');
 var loremIpsum = require('lorem-ipsum');
 var mongoose = require('mongoose');
+var BPromise = require('bluebird');
+var debug = require('debug')('ics:models:article');
 
 var ArticleSchema = mongoose.Schema({
     title: String,
-    excerpt: String,
     content: String,
-    type: String,
-    createdTime: Date,
-    img: String
+    type: String,   // notice, news
+    createdTime: {
+        type: Date,
+        default: Date.now
+    },
+    creator: {
+        type: String,
+        ref: 'User'
+    }
 });
 
 ArticleSchema.statics.random = function(n) {
@@ -22,15 +29,10 @@ function random() {
             count: 7,
             units: 'words'
         }),
-        excerpt: loremIpsum({
-            count: 13,
-            units: 'words'
-        }),
         content: loremIpsum({
             count: 10
         }),
-        date: new Date(),
-        img: '/img/slide/' + _.random(1, 3) + '.jpg'
+        date: new Date()
     };
 }
 

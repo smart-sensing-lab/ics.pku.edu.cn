@@ -30,19 +30,6 @@
 .text(@color){
   color: @color;
 }
-.btn(@bg, @fg: #fff){
-  .btn(@bg, @fg, darken(@bg, 3%), @fg);
-}
-.btn(@bg, @fg: #fff, @bg-hover, @fg-hover){
-  color: @fg;
-  background: @bg;
-  border: 1px solid darken(@bg, 5%);
-  line-height: 1.2;
-  &:hover, &:active, &.active, &:focus{
-    color: @fg-hover;
-    background: @bg-hover;
-  }
-}
 .line-clamp(@lines){
   overflow: hidden;
   display: -webkit-box;

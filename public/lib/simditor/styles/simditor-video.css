@@ -1,0 +1,13 @@
+.simditor-icon-video-o:before {
+  content: 'Video';
+  color: #f00;
+}
+.video-wrap.selected {
+  border: 1px solid #333;
+  height: 30px;
+  width: 50px;
+}
+.video-wrap embed,
+.video-wrap iframe {
+  background-color: #ccc;
+}

@@ -1,0 +1,20 @@
+{%extend 'default-layout'%}
+
+<div>
+
+  {% include 'navbar' %}
+
+  <div class="container">
+    <header class="page-header">
+      <time class="pull-right">
+        {{article.createdTime | date: "%Y-%m-%d"}}
+      </time>
+      <h3> {{article.title}} </h3>
+    </header>
+
+    <section class="content">
+      {{article.content}}
+    </section>
+
+  </div>
+</div>

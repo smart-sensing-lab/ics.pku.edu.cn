@@ -8,11 +8,25 @@
     "host": "0.0.0.0",
     "port": 3008
   },
+  "mongodb": "mongodb://localhost/ics",
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  },
   "livereload": 35748,
   "deploy": {
     "host": "acer.harttle.com",
     "port": 22,
     "username": "harttle",
     "privateKey": "/Users/harttle/.ssh/id_rsa"
-  }
+  },
+  "admin": [{
+    "name": "杨珺",
+    "username": "harttle",
+    "password": "jjjjjj"
+  },{
+    "name": "马萌",
+    "username": "mamengt",
+    "password": "123456"
+  }]
 }

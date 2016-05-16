@@ -1,8 +1,16 @@
-var article = require('../../models/article');
+const Article = require('../../models/article');
+const _ = require('lodash');
 
-exports.view = function(req, done, fail){
-    done({
-        notices: article.random(10)
-    });
+exports.get = function(req, done, fail) {
+    Article
+        .find({
+            type: 'notice'
+        })
+        .sort('-createdTime')
+        .limit(10)
+        .execAsync()
+        .then(notices => done({
+            notices
+        }))
+        .catch(fail);
 };
-
