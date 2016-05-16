@@ -3,8 +3,9 @@ const debug = require('debug')('ics:admin-edit-article');
 
 exports.url = ['/admin/create-article', '/admin/articles/:id/edit'];
 
+var title = '添加文章';
+
 exports.get = function(req, done, fail) {
-    var title = '添加文章';
     var id = req.params.id;
 
     if (id) {

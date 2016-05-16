@@ -22,10 +22,10 @@
     <div class="form-group">
       <label for="type" class="control-label">文章类型</label>
       <select class="form-control" name="type" id="type">
-        <option value="news" {%if article.type == 'news' %}checked{%endif%}>
+        <option value="news" {%if article.type == 'news' %}selected{%endif%}>
           最新动态
         </option>
-        <option value="notice" {%if article.type == 'notice' %}checked{%endif%}>
+        <option value="notice" {%if article.type == 'notice' %}selected{%endif%}>
           通知公告
         </option>
       </select>
