@@ -1,7 +1,8 @@
-var debug = require('debug')('www:error');
+var debug = require('debug')('ics:error');
 
 exports.get = function(req, done, fail, res){
     var err = this.error;
+
     switch(err.status){
         case 301:
         case 303:
@@ -14,6 +15,7 @@ exports.get = function(req, done, fail, res){
         default:
             break;
     } 
+
     done({
         message: err.message || err,
         stack: err.stack
