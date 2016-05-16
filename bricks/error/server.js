@@ -16,6 +16,8 @@ exports.get = function(req, done, fail, res){
             break;
     } 
 
+    res.status(err.status || 500);
+
     done({
         message: err.message || err,
         stack: err.stack
