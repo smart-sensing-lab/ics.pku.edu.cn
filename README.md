@@ -20,8 +20,8 @@ MongoDB:
 Clone and build:
 
 ```bash
-git clone git@github.com:smart-sensing-lab/www.git
-cd www && npm install
+git clone git@github.com:smart-sensing-lab/ics.pku.edu.cn.git
+cd ics.pku.edu.cn && npm install
 brick-asset all
 ```
 
