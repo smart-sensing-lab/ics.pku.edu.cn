@@ -21,8 +21,7 @@ Clone and build:
 
 ```bash
 git clone git@github.com:smart-sensing-lab/ics.pku.edu.cn.git
-cd ics.pku.edu.cn && npm install
-brick-asset all
+cd ics.pku.edu.cn && npm install brick-asset all
 ```
 
 Create `config.json`, and do your configuration:
