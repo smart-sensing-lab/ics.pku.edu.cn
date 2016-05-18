@@ -61,17 +61,26 @@ gulp build
 
 ## Deployment
 
-1. Change `config.env` (within `config.json`) to `"production"`.
+1. Change `config.env` (within `config.json`) to `"production"`, update `config.deploy` accordingly.
 
 2. Build:
 
   ```bash
   gulp dist
+  gulp deploy
   ```
 
 3. Run MongoDB and Redis-Server
 
 4. `npm start`
+
+## Admin Users
+
+Update admin users:
+
+1. Update `config.admin` (make sure `config.mongodb` is valid)
+2. Run MongoDB
+3. `node ./bin/update-admin.js`
 
 [gulp]: http://gulpjs.com/
 [brick.js]: https://github.com/brick-js/brick.js
