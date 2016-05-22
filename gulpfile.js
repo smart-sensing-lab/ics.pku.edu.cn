@@ -4,7 +4,6 @@ var path = require('path');
 var fork = require('child_process').fork;
 var async = require('async');
 var config = require('./config.json');
-var GulpSSH = require('gulp-ssh');
 var watch = require('gulp-watch');
 var fs = require("fs");
 var asset = require('brick-asset');
@@ -17,14 +16,6 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 
-if (config.deploy) {
-    if (config.deploy.privateKey) {
-        config.deploy.privateKey = fs.readFileSync('/Users/harttle/.ssh/id_rsa');
-    }
-    var gulpSSH = new GulpSSH({
-        sshConfig: config.deploy
-    });
-}
 
 var dirs = {
     client: './bricks/*/{client.js,client/**/*.js}',
@@ -103,7 +94,7 @@ gulp.task('js', function(cb) {
             .on('finish', cb));
 });
 
-gulp.task('css', function() {
+gulp.task('css', function(cb) {
     asset.src('./bricks')
         .then(x => asset.css())
         .then(css => file('site.css', css, {
@@ -132,22 +123,6 @@ gulp.task('dist', ['css', 'js'], function() {
         }))
         .pipe(gulp.dest('public'));
 });
-
-if (config.deploy) {
-    gulp.task('deploy', function() {
-        return gulpSSH
-            .shell([
-                'cd repos/lab',
-                'git pull',
-                'npm install --production',
-                'brick-asset all',
-                'sudo systemctl restart lab'
-            ], {
-                filePath: 'deploy.log'
-            })
-            .pipe(gulp.dest('.'));
-    });
-}
 
 gulp.task('build', ['js', 'css']);
 gulp.task('default', ['js', 'css', 'server', 'watch']);

@@ -5,15 +5,21 @@ Official Website for Intelligent Computing and Sensing Laboratory, Peking Univer
 ## Install
 
 `ics.pku.edu.cn` is built on Node.js and powered by [Brick.JS][brick.js].
-`redis-server` and `mongodb` are need:
+`redis-server`, `mongodb`, and `gulp` are need:
 
-Redis-Server:
+Download and install Redis-Server:
 
 <http://redis.io/>
 
-MongoDB:
+Download and install MongoDB:
 
 <https://www.mongodb.com/download-center#community>
+
+Install [gulp][gulp]:
+
+```bash
+npm install gulp
+```
 
 ## Build and Run
 
@@ -21,14 +27,15 @@ Clone and build:
 
 ```bash
 git clone git@github.com:smart-sensing-lab/ics.pku.edu.cn.git
-cd ics.pku.edu.cn && npm install brick-asset all
+cd ics.pku.edu.cn && npm install
+gulp build
 ```
 
 Create `config.json`, and do your configuration:
 
 ```bash
 cp config.example.json config.json
-vim config.json   # make configurations
+vim config.json   # make configurations as needed
 ```
 
 Run ics with mongoDB and Redis:
@@ -41,22 +48,10 @@ npm start
 
 ## Development
 
-Install [gulp][gulp]:
-
-```bash
-npm install gulp
-```
-
 Build and Serve:
 
 ```bash
 gulp
-```
-
-Build assets only:
-
-```bash
-gulp build
 ```
 
 ## Deployment
@@ -67,7 +62,6 @@ gulp build
 
   ```bash
   gulp dist
-  gulp deploy
   ```
 
 3. Run MongoDB and Redis-Server
