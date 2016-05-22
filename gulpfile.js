@@ -92,18 +92,19 @@ gulp.task('watch', function() {
     watch([dirs.css, dirs.js, dirs.view], livereload.changed);
 });
 
-gulp.task('js', function() {
-    return asset.src('./bricks')
+gulp.task('js', function(cb) {
+    asset.src('./bricks')
         .then(x => asset.js())
         .then(css => file('site.js', css, {
                 src: true
             })
             .pipe(prettify())
-            .pipe(gulp.dest('public')));
+            .pipe(gulp.dest('public'))
+            .on('finish', cb));
 });
 
 gulp.task('css', function() {
-    return asset.src('./bricks')
+    asset.src('./bricks')
         .then(x => asset.css())
         .then(css => file('site.css', css, {
                 src: true
@@ -113,10 +114,11 @@ gulp.task('css', function() {
                 browsers: ['> 90%', 'IE >= 8']
             }))
             .pipe(prettify())
-            .pipe(gulp.dest('public')));
+            .pipe(gulp.dest('public'))
+            .on('finish', cb));
 });
 
-gulp.task('dist', function() {
+gulp.task('dist', ['css', 'js'], function() {
     gulp.src(dirs.js)
         .pipe(uglify())
         .pipe(rename({
