@@ -7,7 +7,6 @@ var debug = require('debug')('ics:app');
 var config = require('./config.json');
 var brickJs = require('brick.js');
 var Liquid = require('brick-liquid');
-var less = require('brick-less');
 var db = require('./db.js');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');

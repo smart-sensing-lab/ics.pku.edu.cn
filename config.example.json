@@ -14,12 +14,6 @@
     "port": 6379
   },
   "livereload": 35748,
-  "deploy": {
-    "host": "acer.harttle.com",
-    "port": 22,
-    "username": "harttle",
-    "privateKey": "/Users/harttle/.ssh/id_rsa"
-  },
   "admin": [{
     "name": "杨珺",
     "username": "harttle",
