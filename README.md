@@ -18,7 +18,7 @@ Download and install MongoDB:
 Install [gulp][gulp]:
 
 ```bash
-npm install gulp
+npm install gulp -g
 ```
 
 ## Build and Run
