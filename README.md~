@@ -54,6 +54,20 @@ Build and Serve:
 gulp
 ```
 
+## Deployment
+
+1. Change `config.env` (within `config.json`) to `"production"`, update `config.deploy` accordingly.
+
+2. Build:
+
+  ```bash
+  gulp dist
+  ```
+
+3. Run MongoDB and Redis-Server
+
+4. `npm start`
+
 ## Admin Users
 
 Update admin users:

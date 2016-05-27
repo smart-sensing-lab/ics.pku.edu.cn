@@ -22,6 +22,12 @@ exports.get = function(req, done, fail) {
             });
         });
 
+
+
+
+
+    
+
     //See: https://www.npmjs.com/package/mongoose-query-paginate
     //pager = {
     //  options: options,               // paginate options
