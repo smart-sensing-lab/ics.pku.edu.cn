@@ -41,3 +41,4 @@ public/site.min.css
 
 public/upload/*
 .idea/
+*.*~
