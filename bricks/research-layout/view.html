@@ -1,0 +1,18 @@
+{%extend 'default-layout'%}
+
+<div class="container">
+  {% include 'navbar' %}
+  <h2 class="container">科学研究</h2>
+  <div class="container">
+    <table >
+      <tr>
+        <td id="td-left">
+          <div id="re-list">{% include 'research-list' %}</div>
+        </td>
+        <td>{{ block }}</td>
+      </tr>
+    </table>
+  </div>
+
+  </div>
+</div>

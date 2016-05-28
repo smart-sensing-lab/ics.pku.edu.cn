@@ -1,6 +1,6 @@
-exports.url = '/search';
+exports.url = '/research';
 exports.get = function(req, done, fail) {
     done({
-        searchActive:'active'
+        researchActive:'active'
     });
 };  
