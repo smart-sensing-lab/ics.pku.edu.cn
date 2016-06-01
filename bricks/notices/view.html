@@ -3,7 +3,46 @@
 <div>
 
     {% include 'navbar' %}
-    <div class="notices">
-        <h3>hi, today is holiday!</h3>
+
+    <div class="container">
+        <h2>通知公告</h2>
+        <ul class="list-unstyled notice-list ">
+            {% for notice in pager.results %}
+            <li>
+                <time>{{notice.createdTime | date: "%Y-%m-%d" }}</time>
+                <a class="title" href="/notices/{{notice.id}}" title="{{notice.title}}">
+                    {{notice.title}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if pager.pages %}
+        <nav>
+
+            <ul class="pagination">
+                {% if pager.prev %}
+                <li>
+                    <a href="?page={{pager.prev}}" aria-label="上一页">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% for page in pager.pages %}
+                <li><a href="?page={{page}}">{{page}}</a></li>
+                {% endfor %}
+
+                {% if pager.next %}
+                <li>
+                    <a href="#" aria-label="下一页">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+
     </div>
 </div>

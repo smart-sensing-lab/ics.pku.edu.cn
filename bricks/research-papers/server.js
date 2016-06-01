@@ -1,6 +1,7 @@
 exports.url = '/research-papers';
 exports.get = function(req, done, fail) {
     done({
-        research_papersActive:'active'
+        research_papersActive:'active',
+        researchActive:'active'
     });
 };  
