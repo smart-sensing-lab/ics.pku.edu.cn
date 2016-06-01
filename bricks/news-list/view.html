@@ -5,7 +5,7 @@
   {% include 'navbar' %}
 
   <div class="container">
-    <ul class="list-unstyled news-list">
+    <ul class="list-unstyled news-list ">
       {% for news in pager.results %}
       <li>
         <time>{{news.createdTime | date: "%Y-%m-%d" }}</time>
@@ -16,8 +16,9 @@
       {% endfor %}
     </ul>
 
-    {% if pager.pages > 1 %}
+    {% if pager.pages %}
     <nav>
+
       <ul class="pagination">
         {% if pager.prev %}
         <li>
