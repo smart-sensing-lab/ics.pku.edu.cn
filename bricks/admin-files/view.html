@@ -1,0 +1,37 @@
+{% extend 'admin-layout' %}
+
+<div>
+  <div class="page-header">
+    <h3>文件管理</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="file-name">文件名</th>
+        <th>创建者</th>
+        <th>创建日期</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {%for file in files %}
+      <tr>
+        <td class="file-name">{{file.filename}}</td>
+        <td>{{file.creator.name}}</td>
+        <td>{{file.createdTime | date: '%Y-%m-%d'}}</td>
+        <td>
+          <a class="btn btn-xs btn-default btn-down" data-id="{{file.id}}"
+             href="/upload/{{file.filename}}">
+            下载
+          </a>
+          <a class="btn btn-xs btn-primary btn-delete" data-id="{{file.id}}">
+            删除
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+
+    </table>
+  </div>
+</div>

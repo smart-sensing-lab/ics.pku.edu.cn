@@ -9,12 +9,12 @@ exports.get = function(req, done, fail) {
 
     Article.find()
         .populate('creator')
-        .execAsync()
-        .then(articles => {
+        .execAsync()    //执行上面的两步操作
+        .then(articles => {     //把上面的结果进行回调到articles里面
             done({
                 articleActive: 'active',
                 title: '文章管理',
-                articles: articles
+                articles: articles  //把上面articles里面的值给左边的标识符
             });
         })
         .catch(fail);
