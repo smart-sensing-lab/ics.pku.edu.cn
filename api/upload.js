@@ -3,7 +3,7 @@ const File = require('../models/file.js');
 const multer = require('multer');
 const path = require('path');
 
-//const debug = require('debug')('ics:upload');
+const debug = require('debug')('ics:upload');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) =>
@@ -28,11 +28,9 @@ router.post('/', upload.single('file'), function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-    //debug(id);
+    //debug(req.param('id'));
     File
-        .findOneAndRemove({
-            id: req.param('id')
-        })
+        .findByIdAndRemove(req.params.id)
         .execAsync()
         .then(x => res.json(x))
         .catch(next);

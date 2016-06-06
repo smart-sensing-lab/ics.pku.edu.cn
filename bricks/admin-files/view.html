@@ -3,6 +3,16 @@
 <div>
   <div class="page-header">
     <h3>文件管理</h3>
+
+    <form class="up-file">
+      <input id="infile" type="file" style="display:none">
+      <div class="input-append">
+        <input id="photoCover" class="input-large " type="text" style="height:30px;">
+        <a class="btn btn-default" onclick="$('input[id=infile]').click();">Browse</a>
+      </div>
+      <button type="submit" class="btn  btn-success btn-upload">上传文件</button>
+    </form>
+
     <table class="table">
       <thead>
       <tr>
