@@ -1,6 +1,8 @@
 var $btnDelete = $(module.elements).find('.btn-delete');
 var $btnUpload = $(module.elements).find('.btn-upload');
 
+
+
 //var debug = require('debug')('ics:admin-files');
 
 $('input[id=infile]').change(function() {
@@ -9,8 +11,6 @@ $('input[id=infile]').change(function() {
 
 
 $btnDelete.click(function() {
-    //debug('12222222222');
-    //console.log('eeeeeeeeeeeeeeeeeee');
     if (window.confirm('确认删除该文件吗？')) {
         var id = $(this).data('id');
 
@@ -30,13 +30,25 @@ $btnDelete.click(function() {
     }
 });
 
-$btnUpload.click(exports.post=function(req, done, fail, res) {
-    var file = new File(req.body);
-    file.creator = req.user.id;
+$btnUpload.click(function() {
+    var file=new FormData();
+    file.append('file',$('infile').files[0]);
+    $
+        .ajax({
 
-    file.save()
-        .then(x => res.redirect('/admin/files'))
-    .catch(fail);
+            type: 'POST',
+            file:file,
+            url: '/api/upload/',
+            contentType:application/x-jpg
+        })
+        .done(function() {
+            alert('保存成功！');
+            //location.reload();
+        })
+        .fail(function(e) {
+            console.error(e);
+            alert('上传失败' + e.message);
+        });
 });
 
 
