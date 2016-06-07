@@ -3,14 +3,19 @@
 <div>
   <div class="page-header">
     <h3>文件管理</h3>
-
-    <form method="post" class="up-file" enctype="multipart/form-data">
-      <input id="infile" type="file" style="display:none">
+<!--
+    <form method="post" class="up-file" enctype="multipart/form-data" id="frmUploadFile">
+      <input id="infile" type="file" style="display:none" name="files">
       <div class="input-append">
         <input id="photoCover" class="input-large " type="text" style="height:30px;">
         <a class="btn btn-default" onclick="$('input[id=infile]').click();">Browse</a>
       </div>
-      <button type="submit" class="btn  btn-success btn-upload">上传文件</button>
+      <button type="button" class="btn  btn-success btn-upload">上传文件</button>
+    </form>
+-->
+    <form method="post" class="up-file" enctype="multipart/form-data" id="frmUploadFile">
+      <input id="infile" type="file"  name="file">
+      <button type="button" class="btn  btn-success btn-upload">上传文件</button>
     </form>
 
     <table class="table">

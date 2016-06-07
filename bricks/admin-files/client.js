@@ -4,10 +4,11 @@ var $btnUpload = $(module.elements).find('.btn-upload');
 
 
 //var debug = require('debug')('ics:admin-files');
-
+/*
 $('input[id=infile]').change(function() {
     $('#photoCover').val($(this).val());
 });
+*/
 
 
 $btnDelete.click(function() {
@@ -31,16 +32,21 @@ $btnDelete.click(function() {
 });
 
 $btnUpload.click(function() {
-    var file=new FormData();
-    file.append('file',$('infile').files[0]);
+
+    var formdata=new FormData($("#frmUploadFile")[0]);
+    //formdata.append('file',$('#infile').files[0]);
     $
         .ajax({
 
             type: 'POST',
-            file:file,
+            data:formdata,
             url: '/api/upload/',
-            contentType:application/x-jpg
+            async: false,
+            cache: false,
+            contentType:false,
+            processData: false
         })
+        
         .done(function() {
             alert('保存成功！');
             //location.reload();

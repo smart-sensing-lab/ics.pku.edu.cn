@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 
 const debug = require('debug')('ics:upload');
-debug(00000000000);/////////////////////////////////////
+
 var storage = multer.diskStorage({
     destination: (req, file, cb) =>
         cb(null, path.resolve(__dirname, '../public/upload')),
@@ -17,9 +17,8 @@ var upload = multer({
     storage: storage
 });
 
-router.post('/', upload.single('file'), function(req, res, next) {
+router.post('/', upload.single('file'), function(req, res, next) {//single写文件
 
-    debug(hhhhhhhhhhhhhhhhhhhhhhhhhh);///////////////////////////////////
     var file = req.file;
     if (!file) return res.status(400).end();
 
