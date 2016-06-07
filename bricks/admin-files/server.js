@@ -8,7 +8,7 @@ exports.url = '/admin/files';
 exports.get = function(req, done, fail) {
     if(!req.user) return fail(401);
     File.find()
-        .populate('creator')
+        //.populate('creator')
         .execAsync()
         .then(files => {
         done({

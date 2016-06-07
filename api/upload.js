@@ -17,7 +17,7 @@ var upload = multer({
     storage: storage
 });
 
-router.post('/', upload.single('file'), function(req, res, next) {//single写文件
+router.post('/', upload.single('file'), function(req, res, next) {//single写文件,是一个函数
 
     var file = req.file;
     if (!file) return res.status(400).end();

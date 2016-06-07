@@ -7,7 +7,10 @@ var FileSchema = mongoose.Schema({
     path: String,
     mimetype: String,
     size: String,
-    createdTime: Date
+    createdTime: {
+        type: Date,
+        default: Date.now
+    }
 }, {
     toJSON: {
         virtuals: true

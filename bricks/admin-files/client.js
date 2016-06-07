@@ -4,11 +4,11 @@ var $btnUpload = $(module.elements).find('.btn-upload');
 
 
 //var debug = require('debug')('ics:admin-files');
-/*
+
 $('input[id=infile]').change(function() {
-    $('#photoCover').val($(this).val());
+    $('#fileCover').val($(this).val());
 });
-*/
+
 
 
 $btnDelete.click(function() {
@@ -49,7 +49,8 @@ $btnUpload.click(function() {
         
         .done(function() {
             alert('保存成功！');
-            //location.reload();
+            location.reload();
+            $('#fileCover').val('');
         })
         .fail(function(e) {
             console.error(e);
