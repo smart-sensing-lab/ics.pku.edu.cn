@@ -1,0 +1,47 @@
+{% extend 'admin-layout' %}
+
+<div>
+  <div class="page-header">
+    <h3>文件管理</h3>
+
+    <form method="post" class="up-file" enctype="multipart/form-data" id="frmUploadFile">
+      <input id="infile" type="file"  name="file" style="display:none">
+      <div class="input-append">
+        <a class="btn btn-default" id="browse" onclick="$('input[id=infile]').click();">浏览文件</a>
+        <input id="fileCover" class="input-large " type="text" >
+      </div>
+      <button type="button" class="btn  btn-success btn-upload">上传文件</button>
+    </form>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="file-name">文件名</th>
+        <th>文件大小</th>
+        <th>创建日期</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {%for file in files %}
+      <tr>
+        <td class="file-name">{{file.originalname}}{{file.size|size}}</td>
+        <td>{{file.size|divided_by:1048576|round:2|append:'M'}}</td>
+        <td>{{file.createdTime | date: '%Y-%m-%d'}}</td>
+        <td>
+          <a class="btn btn-xs btn-default btn-down" data-id="{{file.id}}"
+             href="/upload/{{file.filename}}">
+            下载
+          </a>
+          <a class="btn btn-xs btn-primary btn-delete" data-id="{{file.id}}">
+            删除
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+
+    </table>
+  </div>
+</div>
