@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const article = require('./article.js');
 const upload = require('./upload.js');
+const user = require('./user.js');
 const debug = require('debug')('ics:api:index');
 
 // REST Modules
 router.use('/articles', article);
 router.use('/upload', upload);
+router.use('/users', user);
 
 // Error Handler
 router.use(function(err, req, res, next){

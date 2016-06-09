@@ -1,25 +1,15 @@
 var $btnDelete = $(module.elements).find('.btn-delete');
 var $btnUpload = $(module.elements).find('.btn-upload');
 
-
-
-//var debug = require('debug')('ics:admin-files');
-
-$('input[id=infile]').change(function() {
-    $('#fileCover').val($(this).val());
-});
-
-
-
 $btnDelete.click(function() {
-    if (window.confirm('确认删除该文件吗？')) {
+    if (window.confirm('确认删除该管理员吗？')) {
         var id = $(this).data('id');
 
         $
             .ajax({
 
                 type: 'DELETE',
-                url: '/api/upload/' + id
+                url: '/api/users/' + id
             })
             .done(function() {
                 location.reload();
@@ -57,16 +47,4 @@ $btnUpload.click(function() {
             alert('上传失败' + e.message);
         });
 });
-
-
-
-/*
- exports.post = function(req, done, fail, res) {
- var file = new File(req.body);
- file.creator = req.user.id;
-
- file.save()
- .then(x => res.redirect('/admin/files'))
- .catch(fail);
- };*/
 
