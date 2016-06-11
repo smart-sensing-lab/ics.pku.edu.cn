@@ -7,11 +7,13 @@ exports.get = function(req, done, fail){
         imgEntries: [{
             title: '师资<hr/>队伍',
             icon: 'fa-graduation-cap',
-            img: '/img/teachers.jpg'
+            img: '/img/teachers.jpg',
+            place:'/members'
         },{
             title: '科研<hr/>成果',
             icon: 'fa-flask',
-            img: '/img/research.jpg'
+            img: '/img/research.jpg',
+            place:'/research'
         }]
     });
 };
