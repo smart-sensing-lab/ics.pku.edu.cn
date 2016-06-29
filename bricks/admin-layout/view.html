@@ -1,4 +1,4 @@
-{%extend 'default-layout'%}
+{% layout 'default-layout'%}
 
 <div>
   <link rel="stylesheet" href="/lib/simditor/styles/simditor.css">
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="right panel">
-        {{ block }}
+        {% block %}
       </div>
     </div>
 

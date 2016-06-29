@@ -1,4 +1,4 @@
-{%extend 'default-layout'%}
+{% layout 'default-layout'%}
 
 <div >
   {% include 'navbar' %}
@@ -9,7 +9,7 @@
         <td id="td-left">
           <div id="re-list">{% include 'research-list' %}</div>
         </td>
-        <td>{{ block }}</td>
+        <td>{% block %}</td>
       </tr>
     </table>
   </div>

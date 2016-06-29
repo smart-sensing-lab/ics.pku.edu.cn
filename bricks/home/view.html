@@ -1,4 +1,4 @@
-{%extend 'default-layout'%}
+{% layout 'default-layout'%}
 
 <div>
 
@@ -15,7 +15,7 @@
       </div>
       <div class="col-sm-5 img-entries">
         {% for entry in imgEntries %}
-        {% include "home-img-entry" entry %}
+        {% include "home-img-entry"%}
         {% endfor %}
       </div>
     </div>

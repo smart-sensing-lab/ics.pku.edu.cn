@@ -57,7 +57,7 @@ app.use('/api', api);
 var brk = brickJs({
     router: 'server.js'
 });
-brk.engine('.html', new Liquid());
+brk.engine('.html', Liquid());
 app.locals.config = config;
 app.use('/', brk.express);
 
