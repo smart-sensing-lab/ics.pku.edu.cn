@@ -11,7 +11,7 @@ exports.get = function(req, done, fail) {
         })
         .sort('-createdTime')
         .paginate({
-            perPage: 2,
+            perPage: 5,
             page: req.query.page || 1
         }, function(err, pager) {
             if (err) return fail(err);
