@@ -7,7 +7,7 @@ exports.get = function(req, done, fail){
         imgEntries: [{
             title: '师资<hr/>队伍',
             icon: 'fa-graduation-cap',
-            img: '/img/teachers.jpg',
+            img: '/img/home/teachers.jpg',
             place:'/members'
         },{
             title: '科研<hr/>成果',
