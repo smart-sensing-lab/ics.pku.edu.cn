@@ -7,7 +7,7 @@ exports.get = function(req, done, fail) {
     Article
 
         .find({
-            type: 'news'
+            // type: ['news']
         })
         .sort('-createdTime')
         .paginate({
