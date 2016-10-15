@@ -42,3 +42,5 @@ public/site.min.css
 public/upload/*
 .idea/
 *.*~
+
+.DS_Store
