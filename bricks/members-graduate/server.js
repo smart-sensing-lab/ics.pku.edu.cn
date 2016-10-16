@@ -1,7 +1,7 @@
-exports.url = '/members-student';
+exports.url = '/members-graduate';
 exports.get = function(req, done, fail) {
     done({
-        members_studentActive:'active',
+        members_graduateActive:'active',
         membersActive:'active'
     });
 };  
