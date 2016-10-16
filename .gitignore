@@ -44,3 +44,4 @@ public/upload/*
 *.*~
 
 .DS_Store
+dump.rdb
