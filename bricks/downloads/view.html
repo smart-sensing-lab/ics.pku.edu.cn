@@ -16,7 +16,7 @@
         {%for file in files %}
         <tr>
             <td class="file-name">{{file.originalname}}{{file.size|size}}</td>
-            <td>{{file.size|divided_by:1048576|round:2|append:'M'}}</td>
+            <td>{{file.size|divided_by:1024|append:'K'}}</td>
             <td>{{file.createdTime | date: '%Y-%m-%d'}}</td>
             <td>
                 <a class="btn btn-xs btn-default btn-down" data-id="{{file.id}}"
