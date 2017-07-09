@@ -6,10 +6,10 @@ exports.url = '/downloads';
 
 
 exports.get = function(req, done, fail) {
-    // if(!req.user) return fail(401);
+    if(!req.user) return fail(401);
     // find筛选
     File.find()
-    //.populate('creator')
+        //.populate('creator')
         .execAsync()
         .then(files => {
             done({
@@ -20,4 +20,5 @@ exports.get = function(req, done, fail) {
             });
         })
         .catch(fail);
+    
 };
