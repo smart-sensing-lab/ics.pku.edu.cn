@@ -6,7 +6,7 @@
   <ul class="list-unstyled">
     {% for notice in notices %}
     <li>
-      <time>{{notice.createdTime | date: "%Y-%m-%d"}}</time>
+      <!--<time>{{notice.createdTime | date: "%Y-%m-%d"}}</time>-->
       <a class="title" href="/news/{{notice.id}}" title="{{notice.title}}">
         {{notice.title}}</a>
     </li>
