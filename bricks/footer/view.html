@@ -3,7 +3,7 @@
   <section class="meta-info">
     <div class="container">
       <div class="row">
-        <div class="link-col col-sm-2">
+        <div class="link-col col-sm-2 ">
           <header><a href="#" class="active">站内导航</a></header>
           <ul class="list-unstyled" >
             <li><a href="/introduction">实验室介绍</a></li>
@@ -14,7 +14,7 @@
             <li><a href="/downloads">资源下载</a></li>
           </ul>
         </div>
-        <div class="link-col col-sm-5">
+        <div class="link-col col-sm-4 ">
           <header><a href="#">友情链接</a></header>
           <ul class="list-unstyled" style="display:inline-block;vertical-align:top;">
             <li><a href="http://www.pku.edu.cn/">北京大学</a></li>
@@ -28,13 +28,13 @@
             <li><a href="http://isp.psu.edu">宾州州立大学信息科学与技术学院</a></li>
           </ul>
         </div>
-        <div class="link-col col-sm-2">
+        <div class="link-col col-sm-2 ">
           <header><a href="#">网站建议</a></header>
           <ul class="list-unstyled">
             <li>hewei2015@pku.edu.cn</li>
           </ul>
         </div>
-        <div class="logo-col col-sm-3">
+        <div class="logo-col col-sm-3 ">
           <img src="/img/pku/white-with-title.png" alt="logo">
           <p>北京大学智能计算与感知实验室<br> Intelligent Computing and Sensing Laboratory</p>
         </div>
@@ -51,6 +51,12 @@
     </div>
   </section>
 </footer>
+
+<style>
+  .container{
+    word-wrap: break-word;
+  }
+</style>
 
 {% if config.env == 'production' %}
 <script src="/site.min.js"></script>
