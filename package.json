@@ -15,7 +15,6 @@
     "debug": "^2.2.0",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "gulp": "^3.9.1",
     "lodash": "^4.11.1",
     "lorem-ipsum": "^1.0.3",
     "marked": "^0.3.5",
