@@ -1,6 +1,7 @@
 exports.url = '/training';
 exports.get = function(req, done, fail) {
     done({
-        trainingActive:'active'
+        cooperationActive:'active',
+        cooperation_trainingActive:'active'
     });
 };
