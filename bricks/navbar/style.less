@@ -7,13 +7,45 @@ ul{
   margin: 0;
   font-size: 0;
 }
-li{
+
+ul.nav-all>li{
   display: inline-block;
   padding: 13px 0;
   width: 16.66%;
   text-align: center;
+  .subnav{
+    display: none;
+    position: absolute;
+    padding: 13px;
+    z-index: 1000;
+    background: @primary;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      // @container : 750px;  
+      width:680px/6;
+    }
+    @media (min-width: 992px) {
+        // @container : 970px; 
+        width:900px/6; 
+    }
+    @media (min-width: 1200px) {
+        // @container : 1170px;  
+        width:1100px/6;
+    }
+    li{
+      display: block;
+      padding: 13px 0 13px 0;
+      width:100%;
+    }
+  }
 }
-li:hover, li.active{
+ul.nav-all>li:hover{
+  .subnav{
+    display: block;
+  }
+}
+.nav-all>li:hover, .nav-all>li.active{
   background: @primary;
   a, a:hover, a:focus, a.active, a:active{
     color: white;
@@ -23,3 +55,5 @@ a{
   font-size: 15px;
   color: #333;
 }
+
+

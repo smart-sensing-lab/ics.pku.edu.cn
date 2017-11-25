@@ -14,7 +14,7 @@ exports.get = function(req, done, fail) {
         .then(files => {console.log(files);
             done({
                 downloadsActive: 'active',
-                downloads_openActive:'active',
+                // downloads_openActive:'active',
                 title: '资源下载',
                 files: files
             });

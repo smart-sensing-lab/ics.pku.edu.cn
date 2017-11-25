@@ -1,5 +1,5 @@
 <nav class="container">
-  <ul class="list-unstyled">
+  <ul class="nav-all" class="list-unstyled">
     <!--<li class="{{introductionActive}}">
       <a href="/introduction">
         实验室介绍
@@ -11,14 +11,24 @@
       </a>
     </li>-->
     <li class="{{laboratoryActive}}">
-      <a href="/laboratory">
+      <a  href="/laboratory">
         关于实验室
       </a>
+      <ul class="subnav">
+        <li><a href="/members">研究团队</a></li>
+        <li><a href="/laboratory-graduate">实验室校友</a></li>
+        <li><a href="/laboratory-recruit">招贤纳士</a></li>
+        <li><a href="/laboratory-contact">联系我们</a></li>
+      </ul>
     </li>
     <li class="{{researchActive}}">
       <a href="/research">
         科学研究
       </a>
+      <ul class="subnav">
+        <li><a href="/research-direction">研究方向</a></li>
+        <li><a href="/research-project">科研项目</a></li>
+      </ul>
     </li>
     <li class="{{newsActive}}">
       <a href="/news">
@@ -34,6 +44,9 @@
       <a href="/cooperation">
         交流合作
       </a>
+      <ul class="subnav">
+        <li><a href="/training">人才培养</a></li>
+      </ul>
     </li>
     <!--<li class="{{recruitActive}}">
       <a href="/recruit">
@@ -44,11 +57,22 @@
       <a href="/patent">
         学术成果
       </a>
+      <ul class="subnav">
+        <li><a href="/patent-all">专利列表</a></li>
+        <li><a href="/research-papers">论文发表
+        </a></li>
+        <li><a href="/research-other">其它成果</a></li>
+      </ul>
     </li>
     <li class="{{downloadsActive}}">
       <a href="/downloads">
         资源下载
       </a>
+      <ul class="subnav">
+        <li><a href="/downloads#">学术文章</a></li>
+        <li><a href="/downloads#">数据下载
+        </a></li>
+      </ul>
     </li>
   </ul>
 </nav>
