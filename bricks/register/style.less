@@ -1,0 +1,40 @@
+@import '../styles/mixins.less';
+@import '../styles/variables.less';
+
+&{
+  margin-top: 85px;
+  margin-bottom: 120px;
+}
+
+header{
+  font-size: 16px;
+  h3{
+    margin: 0 0 30px;
+  }
+}
+
+form{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.left, .right{
+  display: inline-block;
+  margin: 10px;
+  text-decoration: underline;
+  font-size: 1.5rem;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.user{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 40px;
+  border-radius: 50%;
+  background: url('/img/user.png');
+  background-size: contain;
+}
