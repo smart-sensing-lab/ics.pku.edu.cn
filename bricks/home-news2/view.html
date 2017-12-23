@@ -1,0 +1,17 @@
+<div>
+  <header class="block-header">
+    <a href="/news"> 最新动态</a>
+    <a class="more active" href="/news">更多 &gt;</a>
+  </header>
+
+  <ul class="list-unstyled">
+    {% for news in list1 %}
+    <li>
+      <a class="title" href="/news/{{news.id}}" title="{{news.title}}">
+        {{news.title}}</a>
+      <time>{{news.createdTime | date: "%Y-%m-%d"}}</time>
+    </li>
+    {% endfor %}
+  </ul>
+    
+</div>

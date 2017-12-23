@@ -10,8 +10,8 @@ exports.get = function(req, done, fail) {
         .limit(8)
         .execAsync()
         .then(news => done({
-            list1: _.slice(news, 6, 10),
-            list2: _.slice(news, 10, 14)
+            list1: _.slice(news, 0, 6),
+            // list2: _.slice(news, 4, 8)
         }))
         .catch(fail);
 };
