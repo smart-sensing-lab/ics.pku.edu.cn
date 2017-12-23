@@ -5,11 +5,11 @@ exports.get = function(req, done, fail){
        // carousels: Carousel.random(8)
 
         carousels:[
-            
-            {title: '2017年浙江大学网络空间安全青年科学家国际论坛',
-            content: '',
-            createdTime: Date.now(),
-            img: '/img/home/2017年浙江大学网络空间安全青年科学家国际论坛.png'},
+
+            // {title: '2017年浙江大学网络空间安全青年科学家国际论坛',
+            // content: '',
+            // createdTime: Date.now(),
+            // img: '/img/home/2017年浙江大学网络空间安全青年科学家国际论坛.png'},
 
             {title: '2018年人工智能8大趋势看点',
             content: '',
@@ -31,7 +31,7 @@ exports.get = function(req, done, fail){
             createdTime: Date.now(),
             img: '/img/home/全球视角下的区块链和加密数字货币发展报告.png'},
 
-            {title: '潜心于理科楼中',
+            {title: '徐云峰：物联网与区块链的深度融合势在必行',
             content: '',
             createdTime: Date.now(),
             img: '/img/home/徐云峰：物联网与区块链的深度融合势在必行.png'},    

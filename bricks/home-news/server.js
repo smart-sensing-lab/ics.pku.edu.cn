@@ -7,7 +7,7 @@ exports.get = function(req, done, fail) {
             type: 'news'
         })
         .sort('-createdTime')
-        .limit(8)
+        .limit(14)
         .execAsync()
         .then(news => done({
             list1: _.slice(news, 6, 10),
