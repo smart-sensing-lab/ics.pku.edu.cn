@@ -1,14 +1,14 @@
 var Article = require('../../models/article.js');
 var debug = require('debug')('ics:news-list');//debug输出  require是函数，('ics:news-list')是参数，log输出的时候会带上这个标记
 
-exports.url = '/news';
+exports.url = '/fieldnews';
 
 exports.get = function(req, done, fail) {
     Article
 
         .find({
             // type: ['news']
-            type:'news'
+            type:'fieldnews'
         })
         .sort('-createdTime')
         .paginate({
