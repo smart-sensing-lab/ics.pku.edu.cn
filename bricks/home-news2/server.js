@@ -4,7 +4,7 @@ const _ = require('lodash');
 exports.get = function(req, done, fail) {
     Article
         .find({
-            type: 'news'
+            type: 'fieldnews'
         })
         .sort('-createdTime')
         .limit(8)
