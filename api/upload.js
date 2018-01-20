@@ -20,6 +20,8 @@ var upload = multer({
 router.post('/', upload.single('file'), function(req, res, next) {//single写文件,是一个函数
 
     var file = req.file;
+    file.fileDate = new Date(req.body.fileDate||new Date())
+    console.log('file',file)
     if (!file) return res.status(400).end();
 
     File

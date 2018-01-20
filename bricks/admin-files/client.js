@@ -34,6 +34,11 @@ $btnDelete.click(function() {
 $btnUpload.click(function() {
 
     var formdata=new FormData($("#frmUploadFile")[0]);
+
+    console.log('frmUploadFile',$("#frmUploadFile"))
+    console.log('frmUploadFile[0]',$("#frmUploadFile[0]"))
+    // formdata.append('test','testInfo')
+    console.log('formdata',formdata)
     //formdata.append('file',$('#infile').files[0]);
     $
         .ajax({

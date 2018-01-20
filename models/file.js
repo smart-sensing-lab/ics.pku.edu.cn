@@ -7,6 +7,10 @@ var FileSchema = mongoose.Schema({
     path: String,
     mimetype: String,
     size: String,
+    fileDate: {
+        type: Date,
+        default: Date.now
+    },
     createdTime: {
         type: Date,
         default: Date.now

@@ -9,7 +9,9 @@
       <div class="input-append">
         <a class="btn btn-default" id="browse" onclick="$('input[id=infile]').click();">浏览文件</a>
         <input id="fileCover" class="input-large " type="text" >
+        <input type="date" name="fileDate">
       </div>
+      
       <button type="button" class="btn  btn-success btn-upload">上传文件</button>
     </form>
 
@@ -17,8 +19,8 @@
       <thead>
       <tr>
         <th class="file-name">文件名</th>
-        <th>文件大小</th>
-        <th>创建日期</th>
+        <!-- <th>文件大小</th> -->
+        <th>文章日期</th>
         <th>操作</th>
       </tr>
       </thead>
@@ -27,8 +29,8 @@
       {%for file in files %}
       <tr>
         <td class="file-name">{{file.originalname}}{{file.size|size}}</td>
-        <td>{{file.size|divided_by:1024|append:'K'}}</td>
-        <td>{{file.createdTime | date: '%Y-%m-%d'}}</td>
+        <!-- <td>{{file.size|divided_by:1024|append:'K'}}</td> -->
+        <td>{{file.fileDate | date: '%Y-%m-%d'}}</td>
         <td>
           <a class="btn btn-xs btn-default btn-down" data-id="{{file.id}}"
              href="/upload/{{file.filename}}">
